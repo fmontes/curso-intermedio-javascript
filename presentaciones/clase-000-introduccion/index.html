@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <title>JavaScript Intermerdio - Clase 1</title>
+
+        <link rel="stylesheet" href="../dist/reset.css" />
+        <link rel="stylesheet" href="../dist/reveal.css" />
+        <link rel="stylesheet" href="../dist/theme/night.css" id="theme" />
+        <link rel="stylesheet" href="../dist/fmontes.css" />
+
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="../plugin/highlight/monokai.css" id="highlight-theme" />
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <img
+                        src="../images/js-logo.png"
+                        alt="JavaScript"
+                        style="height: 180px; margin: 0 auto 4rem auto; background: transparent"
+                    />
+                    <h2>JavaScript II</h2>
+                    <p>
+                        <small>Creado por <a href="https://fmontes.com">Freddy Montes</a></small>
+                    </p>
+                </section>
+
+                <section>
+                    <h2>👋🏽 Hello World</h2>
+                    <p>Soy Freddy Montes</p>
+                    <ul style="list-style: none">
+                        <li class="fragment">🟣 Lead Frontend Developer</li>
+                        <li class="fragment">📅 Más de 10 años de experencia</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>👨🏽‍💻 Trabajo con</h2>
+                    <div class="r-hstack justify-center">
+                        <img
+                            class="fragment"
+                            src="../images/angular.png"
+                            alt="Angular"
+                            style="height: 180px; margin: 0 auto 4rem auto; background: transparent"
+                        />
+                        <img
+                            class="fragment"
+                            src="../images/react.png"
+                            alt="React"
+                            style="height: 180px; margin: 0 auto 4rem auto; background: transparent"
+                        />
+                        <img
+                            class="fragment"
+                            src="../images/node.png"
+                            alt="NodeJS"
+                            style="height: 180px; margin: 0 auto 4rem auto; background: white; padding: 0 2rem"
+                        />
+                    </div>
+                </section>
+
+                <section>
+                    <h2>👨🏽‍💻 También he usado</h2>
+                    <ul>
+                        <li class="fragment">VueJS</li>
+                        <li class="fragment">NextJS</li>
+                        <li class="fragment">GraphQL</li>
+                        <li class="fragment">Y un monton de librerías más</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <img
+                        src="../images/js-logo.png"
+                        alt="JavaScript"
+                        style="height: 380px; margin: 0 auto 4rem auto; background: transparent"
+                    />
+                </section>
+
+                <section>
+                    <h2>ℹ️ Información</h2>
+                    <ul>
+                        <li><b>Email:</b> <a href="mailto:freddymontes@gmail.com">freddymontes@gmail.com</a></li>
+                        <li><b>Lecciones:</b> Jueves de 3 a 6 apm</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>✍🏽 ¿Que vamos a aprender?</h2>
+                    <ul>
+                        <li class="fragment">Funciones</li>
+                        <li class="fragment">Como maniupular el DOM</li>
+                        <li class="fragment">AJAX y requests</li>
+                        <li class="fragment">Expresiones regulares</li>
+                        <li class="fragment">Programacion orientada a objetos</li>
+                        <li class="fragment">Librerias y frameworks</li>
+                    </ul>
+
+                    <aside class="notes">
+                        <p>
+                            En este curso vamos a tener un repaso y profundizar un poco mas en funciones y tipos de
+                            funciones, el ámbito y aprenderemos el concepto de closure. Entenderemos que es el DOM y
+                            cómo manipularlo (agregar, editar y eliminar contenido dinámicamente en una pagina). Así
+                            mismo vamos a aprender que es AJAX y como usarlo.
+                        </p>
+                        <p>
+                            Vamos a aprender que son las expresiones regulares y cómo usarlas. Aprenderemos el paradigma
+                            de programación orientada a objetos y sus cuatro pilares así como tambien como aplicarlo a
+                            proyectos de JavaScript.
+                        </p>
+                        <p>
+                            Por ultimo hablaremos sobre librerías de JavaScript modernas, que son y para qué funcionan.
+                        </p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>👩🏼‍⚖️ Reglas básicas</h2>
+                    <ul>
+                        <li class="fragment">Asistencia obligatoria</li>
+                        <li class="fragment">
+                            Puntualidad
+                            <ul>
+                                <li>30m tarde es inasistencia</li>
+                                <li>Ponerte al día es tu responsabilidad</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            Respeto y entender que todos estamos aprendiendo
+                            <ul>
+                                <li class="fragment"><b>Ninguna pregunta es tonta</b></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <aside class="notes">
+                        <ol>
+                            <li>La asistencia es obligatoria, si no puedes llegar, avisa y justifica.</li>
+                            <li>
+                                Llega a la hora.
+
+                                <ul>
+                                    <li>Si llegas 30m tarde equivale a inasistencia.</li>
+                                    <li>
+                                        Es tu responsabilidad ponerle al día con la materia dada durante la ausencia.
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                No sé tolerará bajo ninguna circunstancia faltar el respeto a sus compañeros,
+                                profesores, visitantes o cualquier tercero presente en las instalaciones del CETAV y
+                                fuera de ellas.
+                            </li>
+                        </ol>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>ℹ️ Información</h2>
+                    <ul>
+                        <li><b>Email:</b> <a href="mailto:freddymontes@gmail.com">freddymontes@gmail.com</a></li>
+                        <li><b>Lecciones:</b> Jueves de 3 a 6 apm</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>🏆 Evaluación</h2>
+                    <p>De 0 a 100. <b>Se aprueba con 70.</b></p>
+                    <table>
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Valor</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Ejercicios en clase</td>
+								<td>25%</td>
+							</tr>
+							<tr>
+								<td>Live coding 1</td>
+								<td>15%</td>
+							</tr>
+							<tr>
+								<td>Live coding 2</td>
+								<td>15%</td>
+                            </tr>
+                            <tr>
+								<td>Proyecto final</td>
+								<td>45%</td>
+							</tr>
+						</tbody>
+					</table>
+                </section>
+            </div>
+        </div>
+
+        <script src="../dist/reveal.js"></script>
+        <script src="../plugin/notes/notes.js"></script>
+        <script src="../plugin/markdown/markdown.js"></script>
+        <script src="../plugin/highlight/highlight.js"></script>
+        <script>
+            // More info about initialization & config:
+            // - https://revealjs.com/initialization/
+            // - https://revealjs.com/config/
+            Reveal.initialize({
+                hash: true,
+
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+            });
+        </script>
+    </body>
+</html>

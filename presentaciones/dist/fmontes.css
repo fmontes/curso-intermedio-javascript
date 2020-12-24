@@ -1,0 +1,10 @@
+:root {
+    --background-color: #07313a;
+    --link-color: #f4e060;
+    --link-color-hover: #f3d7ac;
+    --selection-background-color: #f4e060;
+}
+
+.reveal h1 {
+    color: var(--link-color);
+}
