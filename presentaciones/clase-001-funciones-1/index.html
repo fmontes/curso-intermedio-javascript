@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <title>JavaScript Intermerdio - Clase 1</title>
+
+        <link rel="stylesheet" href="../dist/reset.css" />
+        <link rel="stylesheet" href="../dist/reveal.css" />
+        <link rel="stylesheet" href="../dist/theme/night.css" id="theme" />
+        <link rel="stylesheet" href="../dist/fmontes.css" />
+
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="../plugin/highlight/monokai.css" id="highlight-theme" />
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <img
+                        src="../images/js-logo.png"
+                        alt="JavaScript"
+                        style="height: 180px; margin: 0 auto 4rem auto; background: transparent"
+                    />
+                    <h2>Funciones</h2>
+                    <p>
+                        <small>Creado por <a href="https://fmontes.com">Freddy Montes</a></small>
+                    </p>
+                </section>
+
+                <section>
+                    <h3>⚙️ ¿Que es una función?</h3>
+                    <p class="fragment">Es un "subprograma" que hace una sola cosa</p>
+                    <p class="fragment">Ejecuta tarea o calcula valor</p>
+                    <p class="fragment">Recibe valores y retorna valores</p>
+
+                    <aside class="notes">
+                        <ol>
+                            <li>Es un "subprograma" que hace una sola cosa (o deberia hacer una sola cosa)</li>
+
+                            <li>Normalmente se usan para ejecutar una tarea o calcular un valor</li>
+
+                            <li>
+                                Recibe valores y retorna valores. Aunque podria no retornar nada, que en el caso de
+                                JavaScript es `undefined`
+                            </li>
+                        </ol>
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>🆚 Tipos de funciones</h3>
+                    <ul>
+                        <li>Function declarations</li>
+                        <li>Function expressions</li>
+                    </ul>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Function declarations</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function mostrarError(error) {
+                            console.log(error);
+                        }
+                    </code></pre>
+
+                    <aside class="notes">
+                        <ol>
+                            <li>`function` es la palabra reservada para declarar la función</li>
+                            <li>`mostrarError` es el nombre de la función. Es buena practica usar</li>
+                            <li>`camelCase` y darle un nombre que indique lo que hace.</li>
+                            <li>
+                                `error` es el parametro que recibe la función y que se le pasa cuando esta es llamada.
+                                Entre parentesis
+                            </li>
+                            <li>
+                                `cosole.log` es el **cuerpo de la función** que en este caso solo muestra el mensaje de
+                                error que se le pasa.
+                            </li>
+                        </ol>
+                    </aside>
+                </section>
+                <section data-auto-animate>
+                    <h3>Function declarations</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function mostrarError(error) {
+                            console.log(error);
+                        }
+
+                        mostrarError("Este campo es requerido");
+                        // Este campo es requerido
+                    </code></pre>
+                    <aside class="notes">
+                        <ol>
+                            <li>`function` es la palabra reservada para declarar la función</li>
+                            <li>`mostrarError` es el nombre de la función. Es buena practica usar</li>
+                            <li>`camelCase` y darle un nombre que indique lo que hace.</li>
+                            <li>
+                                `error` es el parametro que recibe la función y que se le pasa cuando esta es llamada.
+                                Entre parentesis
+                            </li>
+                            <li>
+                                `cosole.log` es el **cuerpo de la función** que en este caso solo muestra el mensaje de
+                                error que se le pasa.
+                            </li>
+                        </ol>
+                    </aside>
+                </section>
+                <section data-auto-animate>
+                    <h3>Function declarations</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function mostrarError(error) {
+                            console.log(error);
+                        }
+
+                        mostrarError("Este campo es requerido");
+                        // Este campo es requerido
+
+                        console.log(mostrarError("Este campo es requerido"))
+                        // Este campo es requerido
+                        // undefined
+                    </code></pre>
+
+                    <aside class="notes">
+                        Esta función no retorna nada y en este caso solo realiza la tarea de mostrar un error. Si
+                        logueamos la llamada a la función recibimos <code>undefined</code>
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>Funciones que retornan</h3>
+                    <p>Se usa la palabra <code>return</code></p>
+                    <pre><code class="hljs" data-trim data-line-numbers>
+                        function sumar(valorA, valorB) {
+                            return valorA + valorB;
+                        }
+
+                        console.log(sumar(5, 5)) // 10
+                    </code></pre>
+
+                    <aside class="notes">
+                        <ul>
+                            <li>Esta función recibe 2 parametros separados por comas</li>
+                            <li>Retorna la suma de ellos</li>
+                            <li>Esta función si retorna y si logueamos su llamado podemos ver el valor que retorna</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>Function expressions</h3>
+                    <p>Funciones que se almacenan en una variable</p>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        const sumar = function (valorA, valorB) {
+                            return valorA + valorB;
+                        }
+                        
+                        console.log(sumar(5, 5)) // 10
+                    </code></pre>
+
+                    <aside class="notes">
+                        <p>Como puedes ver, la sintaxis para declarar la función son casi iguales.</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>Declarations 🆚 Expressions</h3>
+                    <p><b>Functions expressions</b> se puede emitir el nombre de la función y no son hoisted</p>
+                </section>
+
+                <section>
+                    <h2>⬆️ Hoisting</h2>
+                    <p>JavaScript mueve hacia el principio de la ejecución <b>funciones</b> y <b>declaración</b> de las variables pero <b>no la asignación.</b></p>
+                </section>
+
+                <section>
+                    <h3>Declaración y asignación</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="1|2|4">
+                        var variable; // declaración
+                        variable = "Hola Mundo"; // asignación
+
+                        var variable = "Hola Mundo"; // declaración y asignación
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>¿Como funciona el hoisting?</h2>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Usted escribe esto</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        console.log(sumar(5, 5)) // 10
+
+                        function sumar(valorA, valorB) {
+                            return valorA + valorB;
+                        }
+                    </code></pre>
+
+                    <aside class="notes">
+                        Con function declaration puedes llamar la función antes de declararla, porque el hoisting de JavaScript va a mover arriba la declaración de la función.
+                    </aside>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>JavaScript hace</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function sumar(valorA, valorB) {
+                            return valorA + valorB;
+                        }
+
+                        console.log(sumar(5, 5)) // 10
+                    </code></pre>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Pero, si escribe esto</h3>
+
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        console.log(sumar(5, 5)) // ERROR
+
+                        var sumar = function (valorA, valorB) {
+                            return valorA + valorB;
+                        }                        
+                    </code></pre>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>JavaScript hace</h3>
+
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        var sumar; // Sube la declaración pero no la asignación
+
+                        console.log(sumar(5, 5)) // ERROR
+
+                        sumar = function (valorA, valorB) {
+                            return valorA + valorB;
+                        }                        
+                    </code></pre>
+
+                    <aside class="notes">
+                        Entonces cuando llamamos a la funcion usando la variable, pues no existe todavía.
+                    </aside>
+                </section>
+
+                <section data-auto-animate>
+                    <h2>Arrow Functions</h2>
+                    <p>Es una version "compacta".</p>
+
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        var sumar = (valorA, valorB) => {
+                            return valorA + valorB;
+                        }                        
+                    </code></pre>
+
+                    <aside class="notes">
+                        <p>Dentro de las function expressions tenemos un tipo de funcion "especial". Es una version "compacta" de una function expressions.</p>
+                    </aside>
+                </section>
+
+                <section data-auto-animate>
+                    <h2>Arrow Functions</h2>
+                    <p>Podemos reducirla aún mas</p>
+
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        var sumar = (valorA, valorB) => valorA + valorB;                       
+                    </code></pre>
+
+                    <aside class="notes">
+                        <p>En este caso el return está implicito.</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>No tienen binding a <code>this</code></h3>
+                </section>
+
+                <section data-auto-animate>
+                    <h2>¿Que es <code>this</code>?</h2>
+                </section>
+
+                <section data-auto-animate>
+                    <h2>¿Que es <code>this</code>?</h2>
+                    <p>Es un <code>keyword</code> que se comporta diferente dependiendo desde donde la función sea llamada.</p>
+
+                    <aside class="notes">
+                        Es un <code>keyword</code> (una palabra reservada de JavaScript) que se comporta diferente dependiendo desde donde la función sea llamada.
+                    </aside>
+                </section>
+
+                <section >
+                    <h2>Contexto Global</h2>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="1|3-6|8-11">
+                        console.log(this); // Window
+
+                        // var crea propiedades en el objeto Window
+                        var nombre = 'Freddy';
+                        console.log(this.nombre) // Freddy
+                        console.log(window.nombre) // Freddy
+                        
+                        // let y const no crean propiedades en el objeto Window
+                        let apellido = 'Montes'
+                        console.log(this.apellido) // undefined
+                        console.log(window.apellido) // undefined                     
+                    </code></pre>
+
+                    <aside class="notes">
+                        Por defecto el this  se refiere al objeto "Window", es decir la ventana del navegador.
+                    </aside>
+                </section>
+
+                <section data-auto-animate>
+                    <h2>Funciones</h2>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function nombreDeFuncion() {
+                            console.log(this);
+                        }
+                        
+                        nombreDeFuncion() // Window;                 
+                    </code></pre>
+
+                    <aside class="notes">
+                        Por defecto el this  se refiere al objeto "Window", es decir la ventana del navegador.
+                    </aside>
+                </section>
+
+                <section data-auto-animate>
+                    <h2>Expressions</h2>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        var nombreDeFuncion = function() {
+                            console.log(this);
+                        }
+                        
+                        nombreDeFuncion() // Window;            
+                    </code></pre>
+
+                    <aside class="notes">
+                        Lo mismo pasa en functions expressions
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Arrow Functions</h2>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        var nombreDeFuncion = () => {
+                            console.log(this);
+                        };
+                          
+                        nombreDeFuncion(); // undefined
+                    </code></pre>
+
+                    <aside class="notes">
+                        Pero no en arrow functions
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Elementos del DOM</h2>
+                    <p>Llamando la funcion desde un evento</p>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function nombreDeFuncion() {
+                            console.log(this); // HTMLButtonElement
+                        }
+                        
+                        document.getElementById("button")
+                            .addEventListener('click', nombreDeFuncion)
+                    </code></pre>
+
+                    <aside class="notes">
+                        Otro caso es cuando llamamos la funcion desde un evento bindeado a un elemento del DOM:
+                    </aside>
+                </section>
+
+                <section>
+                    <h2 class="r-fit-text">Buenas practicas</h2>
+                    <aside class="notes">
+                        Buenas practicas para crear funciones
+                    </aside>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Que haga una sola cosa</h3>
+                    <h4>🚫 MALO</h4>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function emailClientes(clientes) {
+                            clientes.forEach(cliente => {
+                                const clienteActual = db.buscar(client);
+                                if (clienteActual.estaActivo()) {
+                                    email(client);
+                                }
+                            });
+                        }
+                    </code></pre>
+                    <aside class="notes">
+                        Buenas practicas para crear funciones
+                    </aside>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Que haga una sola cosa</h3>
+                    <h4>✅ BUENO</h4>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function emailClientesActivos(clientes) {
+                            clientes.filter(estaActivoElCliente).forEach(email);
+                        }
+                          
+                        function estaActivoElCliente(client) {
+                            const clienteActual = db.buscar(client);
+                            return clienteActual.estaActivo();
+                        }
+                    </code></pre>
+                    <aside class="notes">
+                        Buenas practicas para crear funciones
+                    </aside>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Los nombres de funciones deben decir lo que hacen</h3>
+                    <h4>🚫 MALO</h4>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function agregar(mes, fecha) {
+                            //...
+                        }
+                    </code></pre>
+                </section>
+                <section data-auto-animate>
+                    <h3>Los nombres de funciones deben decir lo que hacen</h3>
+                    <h4>✅ BUENO</h4>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function agregarMesAFecha(mes, fecha) {
+                            //...
+                        }
+                    </code></pre>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Que haga una sola cosa</h3>
+                    <h4>✅ BUENO</h4>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function emailClientesActivos(clientes) {
+                            clientes.filter(estaActivoElCliente).forEach(email);
+                        }
+                          
+                        function estaActivoElCliente(client) {
+                            const clienteActual = db.buscar(client);
+                            return clienteActual.estaActivo();
+                        }
+                    </code></pre>
+                    <aside class="notes">
+                        Buenas practicas para crear funciones
+                    </aside>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Máximo dos argumentos</h3>
+                    <h4>🚫 MALO</h4>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function crearCliente(nombre, apellido, email, telefono, ciudad) {
+                            //...
+                        }
+                        crearCliente('Jose', 'Gonzalez' 'jose@gmail.com', '1234567890', 'San José')
+                            
+                    </code></pre>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Los nombres de funciones deben decir lo que hacen</h3>
+                    <h4>✅ BUENO</h4>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="1-10|12-21">
+                        function crearCliente(cliente) {
+                            // ...
+                        }
+                        crearCliente({
+                            apellido: 'Gonzalez',
+                            ciudad: 'San José',
+                            email: 'jose@gmail.com',
+                            nombre: 'Jose',
+                            telefono: '1234567890'
+                        })
+                        
+                        // Usando spread operator
+                        function crearCliente({
+                            apellido,
+                            ciudad,
+                            email,
+                            nombre,
+                            telefono
+                        }) {
+                            //...
+                        }
+                    </code></pre>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>No usar banderas como parametros</h3>
+                    <h4>🚫 MALO</h4>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function crearArchivo(nombre, temporal) {
+                            if (temporal) {
+                                fs.create(`./temp/${nombre}`);
+                            } else {
+                                fs.create(nombre);
+                            }
+                        }
+                    </code></pre>
+                </section>
+                <section data-auto-animate>
+                    <h3>No usar banderas como parametros</h3>
+                    <h4>✅ BUENO</h4>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function crearArchivo(nombre) {
+                            fs.create(nombre);
+                        }
+                          
+                        function crearArchivoTemporal(nombre) {
+                            createFile(`./temp/${nombre}`);
+                        }
+                    </code></pre>
+                </section>
+                
+                <section>
+                    <h2 class="r-fit-text">Muchas Gracias</h2>
+                </section>
+            </div>
+        </div>
+
+        <script src="../dist/reveal.js"></script>
+        <script src="../plugin/notes/notes.js"></script>
+        <script src="../plugin/markdown/markdown.js"></script>
+        <script src="../plugin/highlight/highlight.js"></script>
+        <script>
+            // More info about initialization & config:
+            // - https://revealjs.com/initialization/
+            // - https://revealjs.com/config/
+            Reveal.initialize({
+                hash: true,
+
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+            });
+        </script>
+    </body>
+</html>
