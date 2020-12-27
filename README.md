@@ -11,7 +11,7 @@ Por ultimo hablaremos sobre librerías de JavaScript modernas, que son y para qu
 | Tema | Fecha | Presentacion | Ejercicio |
 |---|---|---|---|
 | 🔱 Introducción y funciones | Enero 2021 | [Link](https://fmontes.github.io/curso-intermedio-javascript/presentaciones/clase-001-funciones-1/) | [Link](https://stackblitz.com/edit/clase-001-funciones-1?file=script.js) |
-| 🔱 Funciones | Enero 2021 | Link | Link |
+| 🔱 Funciones | Enero 2021 | [Link](https://fmontes.github.io/curso-intermedio-javascript/presentaciones/clase-002-funciones-2/) | [Link](https://stackblitz.com/edit/clase-002-funciones-scope-closure?file=script.js) |
 | 🌲 ¿Que es el DOM? | Enero 2021 | Link | Link |
 | 🌲 Manipulando el DOM | Enero 2021 | Link | Link |
 | 👩🏽‍💻 Live coding 1 | Febrero 2021 | Link | Link |

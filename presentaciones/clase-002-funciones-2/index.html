@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <title>JavaScript Intermerdio - Clase 2</title>
+
+        <link rel="stylesheet" href="../dist/reset.css" />
+        <link rel="stylesheet" href="../dist/reveal.css" />
+        <link rel="stylesheet" href="../dist/theme/night.css" id="theme" />
+        <link rel="stylesheet" href="../dist/fmontes.css" />
+
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="../plugin/highlight/monokai.css" id="highlight-theme" />
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <img
+                        src="../images/js-logo.png"
+                        alt="JavaScript"
+                        style="height: 180px; margin: 0 auto 4rem auto; background: transparent"
+                    />
+                    <h2>Funciones</h2>
+                    <p>Parametros y argumentos, scope y closures</p>
+                    <p>
+                        <small>Creado por <a href="https://fmontes.com">Freddy Montes</a></small>
+                    </p>
+                </section>
+
+                <section>
+                    <h2>Argumentos</h2>
+                    <p>Son <b>valores</b> que se pasan a la función cuando se invoca</p>
+                </section>
+
+                <section>
+                    <h2>Parametros</h2>
+                    <p>Son <b>variables</b> enumeradas como parte de la definición de función</p>
+                </section>
+
+                <section>
+                    <img src="./images/001-parametros-argumentos.png" alt="Parametros vs Argumentos" />
+                </section>
+
+                <section>
+                    <h2>Más sobre parámetros</h2>
+                    <ul>
+                        <li>Son variables</li>
+                        <li>Pueden ser de cualquier tipo</li>
+                        <li>Si no se pasan son <code>undefined</code></li>
+                    </ul>
+
+                    <aside class="notes">
+                        <ul>
+                            <li>Son <b>variables</b> enumeradas como parte de la definición de función.</li>
+                            <li>
+                                Una función puede recibir cualquier tipo de dato como parámetro, incluso otras
+                                funciones.
+                            </li>
+                            <li>En JavaScript, los parámetros de función están predeterminados como `undefined`.</li>
+                            <li>Desde ES6 hay dos tipos nuevos de parámetros: parámetros por defecto y el resto de</li>
+                            parámetros.
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>ES6</h2>
+                    <p>Desde ES6 hay <b>dos tipos nuevos</b> de parámetros</p>
+                    <ul>
+                        <li class="fragment">Parametros por defecto</li>
+                        <li class="fragment">El resto de parámetros</li>
+                    </ul>
+                </section>
+
+                <section data-auto-animate>
+                    <h2>Parámetros por defecto</h2>
+                    <p>Proteger las funciones</p>
+
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="1-3|5|7">
+                        function multiply(num1, num2) {
+                            return num1 * num2;
+                        }
+
+                        multiply(5, 2) // 10
+
+                        multiply(5) // NaN !
+                    </code></pre>
+
+                    <aside class="notes">
+                        Siempre es buena práctica "proteger" tus funciones de lo que el usuario puede mandarle y una
+                        manera de hacerlo es con tener parámetros por defecto.
+                    </aside>
+                </section>
+
+                <section data-auto-animate>
+                    <h2>Parámetros por defecto</h2>
+                    <p>Proteger las funciones</p>
+
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="1-6|8|10">
+                        function multiply(num1, num2) {
+                            if (typeof num2 !== 'undefined') {
+                                num2 = 1;
+                            }
+                            return a * num2;
+                        }
+
+                        multiply(5, 2) // 10
+
+                        multiply(5) // 5
+                    </code></pre>
+
+                    <aside class="notes">
+                        Siempre es buena práctica "proteger" tus funciones de lo que el usuario puede mandarle y una
+                        manera de hacerlo es con tener parámetros por defecto.
+                    </aside>
+                </section>
+
+                <section data-auto-animate>
+                    <h2>Parámetros por defecto</h2>
+                    <p>Usando parametros por defecto</p>
+
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function multiply(a, b = 1) {
+                            return a * b
+                        }
+                          
+                        multiply(5) // 5
+                    </code></pre>
+
+                    <aside class="notes">
+                        Siempre es buena práctica "proteger" tus funciones de lo que el usuario puede mandarle y una
+                        manera de hacerlo es con tener parámetros por defecto.
+                    </aside>
+                </section>
+
+                <section data-background="#f4e060">
+                    <h3>Default parameters solo funciona con valores <code>undefined</code></h3>
+                    <p>Ejemplo: <code>null</code> o <code>false</code> no aplica.</p>
+                </section>
+
+                <section>
+                    <h2>El resto de parámetros</h2>
+                    <p><b>Todos</b> los argumentos no definidos en la función como un array</p>
+
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function saludar(saludo, ...nombres) {
+                            return saludo + " " + nombres.join(", ") + "!";
+                        }
+                        
+                        saludar("Hola Mundo", "Kanye", "West");
+                        // "Hola Mundo, Kanye West!"
+                    </code></pre>
+
+                    <aside class="notes">
+                        <p>Representa todos los argumentos no definidos en la función como un array.</p>
+                        <p>
+                            Cuando digo como un array significa que tenemos todos los metodos del array (map, filter,
+                            reduce) disponibles para usar.
+                        </p>
+                        <p>
+                            Pero como el nombre lo dice "resto de los parámetros", esto signifca que el array va a
+                            contener los valores de los parámetros que no tengan nombre en la definicion de la función.
+                        </p>
+                        <p>
+                            Y para crearlo crearlo o accesarlo hacemos <code>...nombreDeLaVariable</code> en la lista de
+                            parametros de la función.
+                        </p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Todos los parametros</h2>
+
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="1-2|3|5-8|10|12">
+                        // args es el nombre del array
+                        function sumarTodo(...args) { 
+                            let sum = 0;
+                          
+                            // Iteramos sobre el array
+                            args.forEach(function(arg) {
+                              sum += arg; // sumamos los valores    
+                            })
+                          
+                            return sum;
+                          }
+                          sumarTodo(1, 2, 3, 4, 5) // 15
+                    </code></pre>
+
+                    <aside class="notes">
+                        <p>Al no definir ningún parametro, solo el resto de ellos, obtenemos todos.</p>
+                    </aside>
+                </section>
+
+                <section data-background="#f4e060">
+                    <h5>One more thing...</h5>
+                    <h3 class="fragment">El objeto <code>arguments</code></h3>
+                </section>
+
+                <section>
+                    <h3>El objeto <code>arguments</code></h3>
+                    <p><b>TODOS</b> los argumentos de una función (no solo a los no nombrados)</p>
+                    <p>El objeto es un "array-like" <b>no un array</b></p>
+                </section>
+
+                <section>
+                    <h3>El objeto <code>arguments</code></h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="1|2|4-6|8|11">
+                        function sumarTodo() { 
+                            let sum = 0;
+                          
+                            for (let arg of arguments) {
+                                sum += arg;
+                            }
+                          
+                            return sum;
+                        }
+
+                        sumarTodo(1, 2, 3, 4, 5) // 15
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Scope</h2>
+                    <p>Es el ambito donde vive variable</p>
+                </section>
+
+                <section>
+                    <h2>Scope</h2>
+                    <p>Hay dos tipos</p>
+                    <ul>
+                        <li class="fragment">Global</li>
+                        <li class="fragment">Local</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Scope Global</h2>
+                    <p>Variables definidas <b>fuera</b> de una función.</p>
+                </section>
+
+                <section>
+                    <h2>Scope Local</h2>
+                    <p>Variables definidas <b>dentro</b> de una función.</p>
+                </section>
+
+                <section>
+                    <h2>Scope</h2>
+                    <p>La función usa las variables del scope donde vive.</p>
+                    <pre
+                        data-id="code-animation"
+                    ><code class="hljs" data-trim data-line-numbers="|1-2|4-14|7|1-2,7|9-11|1-2,5,9-11|13|16-18">
+                        var nombre = "Freddy";
+                        var apellido = "Montes";
+                        
+                        function imprimirDatos() {
+                            var saludo = "Hello";
+                            
+                            console.log(nombre + ' ' +  apellido);
+                            
+                            function hello() {
+                                console.log(saludo + ' ' + nombre + ' ' +  apellido);
+                            }
+
+                            hello();
+                        }
+                        
+                        imprimirDatos();
+                        // "Freddy Montes"
+                        // "Hello Freddy Montes"
+                    </code></pre>
+                    <aside class="notes">
+                        Las variables definidas fuera de la función pero dentro del scope global son accesibles desde la
+                        función.
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Scope</h2>
+                    <p>Pero el scope no puede usar las variables de la función</p>
+                    <pre
+                        data-id="code-animation"
+                    ><code class="hljs" data-trim data-line-numbers="|4,16-18|4,16-18,9,10,12,16-17|20,21|20,21,4-5,18,21|23,24|4,9-12,18,23,24">
+                        var nombre = "Freddy";
+                        var apellido = "Montes";
+                        
+                        function imprimirDatos() {
+                            var saludo = "Hello";
+                        
+                            console.log(nombre + ' ' +  apellido);
+                          
+                            function hello() {
+                                var despedida = "Bye!"
+                                console.log(saludo + ' ' + nombre + ' ' +  apellido + ' ' + despedida);
+                            }
+                          
+                            hello();
+                        
+                            // ReferenceError: despedida is not defined
+                            console.log(despedida);
+                        }
+                        
+                        // ReferenceError: saludo is not defined
+                        console.log(saludo); 
+
+                        // ReferenceError: hello is not defined
+                        hello();
+                    </code></pre>
+                    <aside class="notes">
+                        Las variables definidas fuera de la función pero dentro del scope global son accesibles desde la
+                        función.
+                    </aside>
+                </section>
+
+                <section>
+                    <img src="./images/002-scope.png" alt="El Scope de la función" />
+                </section>
+
+                <section>
+                    <h2>Scope de bloque</h2>
+                    <p>Variables con <code>let</code> y <code>const</code> tienen scope de bloque.</p>
+
+                    <aside class="notes">
+                        Con la introducción de let y const para declarar variables tenemos un nuevo scope, el de bloque. Podriamos decir que es una especie de "sub scope".
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>¿Que es un bloque?</h2>
+                    <p>Sentencias (lineas de código) entre <code>{}</code></p>
+                </section>
+
+                <section>
+                    <h2>Bloques más comunes</h2>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        if (some_condition) {
+                            console.log('hacer algo');
+                        }
+                            
+                        for (let arg of arguments) {
+                            console.log('hacer algo');
+                        }
+                            
+                        while (counter < 10) {
+                            console.log('hacer algo');
+                        }
+                    </code></pre>
+                </section>
+
+                <section data-auto-animate>
+                    <h2><code>let</code> y <code>const</code></h2>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|3,4,6,8-9">
+                        let numero = 10;
+
+                        if (numero > 9) {
+                            let mensaje = 'El numero es mayor que 9';
+                            console.log(mensaje);
+                        }
+                        
+                        // ReferenceError: mensaje is not defined
+                        console.log(mensaje);
+                    </code></pre>
+
+                    <aside class="notes">
+                        <p>Todas las variables declaradas con let y const tiene su scope en el bloque donde fueron declaradas.</p>
+                    </aside>
+                </section>
+
+                <section data-auto-animate>
+                    <h2>Cambiamos por <code>var</code></h2>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|3,4,6,8-9">
+                        let numero = 10;
+
+                        if (numero > 9) {
+                          var mensaje = 'El numero es mayor que 9';
+                          console.log(mensaje);
+                        }
+                        
+                        // "El numero es mayor que 9"
+                        console.log(mensaje);
+                    </code></pre>
+
+                    <aside class="notes">
+                        <p>Todas las variables declaradas con let y const tiene su scope en el bloque donde fueron declaradas.</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Lo mismo en una función</h2>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|1,10,12|2,3,6,8-9">
+                        function imprimirMensaje(numero) {
+                            if (numero > 9) {
+                                let mensaje = 'El numero es mayor que 9';
+                                console.log(mensaje);
+                                // El numero es mayor que 9
+                            }
+                            
+                            console.log(mensaje);
+                            // ReferenceError: mensaje is not defined
+                        }
+                          
+                        imprimirMensaje(10);
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Closure</h2>
+                    <p>Es cuando una fución interna tiene acceso a las variables de la función externa.</p>
+
+                    <aside class="notes">
+                        <p>Es cuando una fución interna (o hija) puede recordar y tiene acceso a las variables de la fución externa (o padre).</p>
+
+                        <p>Pero incluso despues que la función padre fué ejecutada.</p>
+                    </aside>
+                </section> 
+
+                <section>
+                    <h3>¿Para que sirve closure?</h3>
+                    <p>Esta función suma 5 al valor que le pasemos</p>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function agregarCinco(numero) {
+                            return numero + 5
+                        }
+                        
+                        agregarCinco(10) //15
+                    </code></pre>
+                </section>
+                <section data-background="#f4e060">
+                    <h3>¿Como hacemos una función que nos permita sumar cualquier numero?</h3>
+                </section>
+
+                <section>
+                    <h2>Usando closure</h2>
+                    <p>Una función que retorna otra función</p>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function agregarNumero(numero) {
+                            function agregar(otroNumero) {
+                                return numero + otroNumero;
+                            }
+                            return agregar;
+                        }
+                    </code></pre>
+
+                    <aside class="notes">
+                        <p>Si vemos este codigo bien, tenemos una función que: Crea una función interna y luego la retorna.</p>
+                        <p>Al retornar algo significa que podemos guardarlo en una variable.</p>
+                    </aside>
+                </section>
+
+                <section data-background="#f4e060">
+                    <h3>¿y esto para que sirve?</h3>
+                </section>
+
+                <section>
+                    <h2>Usando closure</h2>
+                    <p>Una función que retorna otra función</p>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        function agregarNumero(numero) {
+                            function agregar(otroNumero) {
+                                return numero + otroNumero;
+                            }
+                            return agregar;
+                        }
+                          
+                        var agregar10 = agregarNumero(10);
+                        var agregar5 = agregarNumero(5);
+                          
+                        agregar10(10) // 20;
+                        agregar5(10) // 15;
+                    </code></pre>
+                    <aside class="notes">
+                        <p>Repasemos el concepto de closure:</p>
+
+                        <p>Función que tiene acceso a las variables de su <b>scope externo</b>.</p>
+
+                        <p>En este caso tenemos una función que dentro declara otra función (interna).</p>
+
+                        <p>Esta función interna (`agregar`) tiene acceso no solo al <b>Global Scope</b> sino tambien al <b>scope de su función externa</b> `agregarNumero` y por ende tiene acceso a sus variables: el parámetro `numero`.</p>
+
+                        <p>Entonces, cuando llamamos a la función `agregarNumero` con un `numero` y la guardamos en una variable (porque retorna algo, una función) lo que estamos guardando en dicha variable es la función `agregar` con el parámetro `numero` que pasamos <b>en ese momento,</b> en el momento de la llamada.</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Inspeccionando el Closure</h2>
+                    <code>console.dir(agregar10)</code>
+                    <img src="./images/003-inspeccionando-closure.png" alt="El Scope de la función" />
+                </section>
+
+                <section>
+                    <h4>Podemos ver todos los scopes</h4>
+                    <p>Miremos este código</p>
+
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|1|5">
+                    const RANDOM = 99;
+
+                    function agregarNumeroRandom(numero) {
+                        function agregar(otroNumero) {
+                            return numero + otroNumero + RANDOM;
+                        }
+                        return agregar;
+                    }
+
+                    const agregar10 = agregarNumeroRandom(10);
+                    console.dir(agregar10);
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Inspeccionando el Closure</h2>
+                    <code>console.dir(agregar10)</code>
+                    <img src="./images/004-inspeccionando-closure2.png" alt="El Scope de la función" />
+                </section>
+
+                <section>
+                    <h2 class="r-fit-text">Muchas Gracias</h2>
+                </section>
+            </div>
+        </div>
+
+        <script src="../dist/reveal.js"></script>
+        <script src="../plugin/notes/notes.js"></script>
+        <script src="../plugin/markdown/markdown.js"></script>
+        <script src="../plugin/highlight/highlight.js"></script>
+        <script>
+            // More info about initialization & config:
+            // - https://revealjs.com/initialization/
+            // - https://revealjs.com/config/
+            Reveal.initialize({
+                hash: true,
+
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+            });
+        </script>
+    </body>
+</html>
