@@ -171,16 +171,16 @@
 
                 <section>
                     <h2>⬆️ Hoisting</h2>
-                    <p>JavaScript mueve hacia el principio de la ejecución <b>funciones</b> y <b>declaración</b> de las variables pero <b>no la asignación.</b></p>
+                    <p>JavaScript mueve hacia el principio de la ejecución <b>funciones</b> y <b>declaración</b> de las variables pero <b>no la inicialización.</b></p>
                 </section>
 
                 <section>
-                    <h3>Declaración y asignación</h3>
+                    <h3>Declaración y inicialización</h3>
                     <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="1|2|4">
                         var variable; // declaración
-                        variable = "Hola Mundo"; // asignación
+                        variable = "Hola Mundo"; // inicialización
 
-                        var variable = "Hola Mundo"; // declaración y asignación
+                        var variable = "Hola Mundo"; // declaración y inicialización
                     </code></pre>
                 </section>
 
@@ -230,7 +230,7 @@
                     <h3>JavaScript hace</h3>
 
                     <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
-                        var sumar; // Sube la declaración pero no la asignación
+                        var sumar; // Sube la declaración pero no la inicialización
 
                         console.log(sumar(5, 5)) // ERROR
 
