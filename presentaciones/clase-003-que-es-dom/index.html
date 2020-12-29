@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <title>JavaScript Intermerdio - Clase 2</title>
+
+        <link rel="stylesheet" href="../dist/reset.css" />
+        <link rel="stylesheet" href="../dist/reveal.css" />
+        <link rel="stylesheet" href="../dist/theme/night.css" id="theme" />
+        <link rel="stylesheet" href="../dist/fmontes.css" />
+
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="../plugin/highlight/monokai.css" id="highlight-theme" />
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <img
+                        src="images/001-logo.png"
+                        alt="DOM"
+                        style="height: 180px; margin: 0 auto 4rem auto; background: transparent"
+                    />
+                    <h2>¿Que es el DOM?</h2>
+                    <p>Y como modificarlo</p>
+                    <p>
+                        <small>Creado por <a href="https://fmontes.com">Freddy Montes</a></small>
+                    </p>
+                </section>
+
+                <section>
+                    <h3>Entendamos el navegador</h3>
+                    <img src="images/002-navegador.png" height="500" alt="">
+
+                    <aside class="notes">
+                        <p>Empezando de arriba hacia abajo:</p>
+
+                        <ul>
+                            <li>b>Navegador:</b> representa el navegador como tal (Chrome, Firefox, etc). En JavaScript puedes accesarlo a traves del objeto `Navigator` y puedes obtener de el lenguaje, o la localizacion del dispositivo (previo permiso aprobado por el usuario), si tiene conexion a internet etc.</li>
+                            <li><b>Ventana:</b> Es el tab donde se carga la pagina web y se accesa a traves del objeto `Window`. Entre otras cosas te permite manipular el documento y escuchar eventos.</li>
+                            <li><b>Documento:</b> Es la pagina web como tal, es donde vive realmente el DOM. Te permite manipular la informacion del HTML y el CSS de la pagina y se puede accesar a traves del objeto `Document`.</li>
+                        </ul>
+
+                    </aside>
+                </section>
+
+                <section>
+                    <blockquote>
+						Todas las páginas web son un documento
+					</blockquote>
+                </section>
+
+                <section>
+                    <h3>¿Que es un documento?</h3>
+                    <p>
+                        No es mas que la <b>representación</b> escrita, dibujada, presentada del pensamiento
+                    </p>
+                </section>
+
+                <section>
+                    <h3>En el contexto de la Web</h3>
+                    <p>Denota un archivo informático principalmente de texto que incluye su <b>estructura y formato</b></p>
+                </section>
+
+                <section>
+                    <h2>¿Y el DOM?</h2>
+                    <h4>Significa <b>Document Object Model</b></h4>
+                    <p>Es una <b>interfaz</b> de programación para los documentos HTML y XML.</p>
+                </section>
+
+                <section>
+                    <h2>DOM</h2>
+                    <p>
+						Nos da una <b>representación</b> del documento como un grupo de nodos y objetos estructurados.
+					</p>
+                </section>
+
+                <section data-background="#f4e060">
+                    <h3>Conecta las páginas web con <br/> los lenguajes de programación</h3>
+                </section>
+
+                <section>
+                    <h3>DOM y JavaScript</h3>
+                    <ul>
+                        <li>El DOM no es un lenguaje de programación</li>
+                        <li>Sin el DOM JavaScript no tendría como acceder y modificar una página Web</li>
+                    </ul>
+
+                    <aside class="notes">
+                        El DOM fue diseñado para ser independiente de cualquier lenguaje de programación y se hizo de tal manera que la presentación estructural del documento sea disponible desde un simple y consistente interfaz.
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>El arbol del DOM</h2>
+                    <img src="images/003-html-code.png" alt="" style="margin:0;">
+                    <aside class="notes">
+                        Cuando un navegador web analiza un documento HTML, crea un árbol DOM y luego lo usa para mostrar el documento.
+                    </aside>
+                </section>
+
+                <section>
+                    <h2 class="r-fit-text">Examinando el DOM tree</h2>
+                </section>
+
+                <section data-background="#f4e060">
+                    <h5>EN RESUMEN</h5>
+                    <h3>El DOM es una representación de la página Web <u>usando objetos</u></h3>
+                    <p>Y que se puede modificar con JavaScript</p>
+                </section>
+
+                <section>
+                    <h2>¿Objetos? ¿Que son?</h2>
+                    <p>Es un ente que tiene <b>propiedades</b> (caracteristicas) y metodos (comportamientos o acciones).</p>
+
+                    <aside class="notes">Acá nos estamos metiendo un poco en el paradigma de la programación orientada a objetos (que vamos a ver más adelante), pero necesitamos entender el concepto de objetos para entender mejor como funciona el DOM.</aside>
+                </section>
+
+                <section>
+                    <h2>Audífono</h2>
+                    <h4>PROPIEDADES</h4>
+                    <ul>
+                        <li>Color: Negro</li>
+                        <li>Marca: Sony</li>
+                        <li>Noise cancelling: Si</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Audífono</h2>
+                    <h4>METODOS</h4>
+                    <ul>
+                        <li>Encender</li>
+                        <li>Apagar</li>
+                        <li>Subir volumen</li>
+                        <li>Bajar volumen</li>
+                    </ul>
+                </section>
+
+                <section data-background="#f4e060">
+                    <h4>Todos los elementos del DOM son objetos</h4>
+                    <p>Vamos a modificarlos con ellos usando sus propiedades y sus metodos.</p>
+                </section>
+
+                <section>
+                    <h3>Tipos de Objetos del DOM</h3>
+                    <ul>
+                        <li class="fragment">Document</li>
+                        <li class="fragment">Node</li>
+                        <li class="fragment">Element</li>
+                        <li class="fragment">NodeList</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Document</h3>
+                    <p>Representa cualquier pagina web cargada en el browser</p>
+
+                    <aside class="notes">
+                        Representa cualquier pagina web cargada en el browser y sirve como punto de entrada al contenido de la pagina web.
+                    </aside>
+                </section>
+                <section>
+                    <h3>Node</h3>
+                    <p>Todos los objetos dentro del Document es un nodo de algún tipo. </p>
+                </section>
+                <section>
+                    <h3>Element</h3>
+                    <p>Un elemento es un tipo específico de nodo</p>
+
+                    <ul style="list-style: none;">
+                        <li>
+                            <code>&lt;a&gt;</code>: HTMLAnchorElement
+                        </li>
+                        <li>
+                            <code>&lt;p&gt;</code>: HTMLParagraphElement
+                        </li>
+                    </ul>
+
+                    <aside class="notes">
+                        Un elemento es un tipo específico de nodo. Por ejemplo <code>&lt;a&gt;</code> es un element de tipo HTMLAnchorElement pero un <code>&lt;p&gt;</code> es un element de HTMLParagraphElement.
+                    </aside>
+                </section>
+                <section>
+                    <h3>NodeList</h3>
+                    <p>Es una colección de nodos</p>
+
+                    <aside class="notes">
+                        es una coleccion de nodos. Es como una "especie de array", es decir puedes acceder a un nodo de la lista haciendo lista[4] como en un array, pero no tiene todos los metodos de un array
+                    </aside>
+                </section>
+
+                <section>
+                    <h2 class="r-fit-text">Muchas Gracias</h2>
+                </section>
+            </div>
+        </div>
+
+        <script src="../dist/reveal.js"></script>
+        <script src="../plugin/notes/notes.js"></script>
+        <script src="../plugin/markdown/markdown.js"></script>
+        <script src="../plugin/highlight/highlight.js"></script>
+        <script>
+            // More info about initialization & config:
+            // - https://revealjs.com/initialization/
+            // - https://revealjs.com/config/
+            Reveal.initialize({
+                hash: true,
+
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+            });
+        </script>
+    </body>
+</html>
