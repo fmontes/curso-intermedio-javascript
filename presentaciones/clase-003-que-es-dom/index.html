@@ -24,7 +24,7 @@
                         style="height: 180px; margin: 0 auto 4rem auto; background: transparent"
                     />
                     <h2>¿Que es el DOM?</h2>
-                    <p>Y como modificarlo</p>
+                    <p>Y como accesarlo</p>
                     <p>
                         <small>Creado por <a href="https://fmontes.com">Freddy Montes</a></small>
                     </p>
@@ -61,13 +61,13 @@
 
                 <section>
                     <h3>En el contexto de la Web</h3>
-                    <p>Denota un archivo informático principalmente de texto que incluye su <b>estructura y formato</b></p>
+                    <p>Es un archivo informático principalmente de texto que incluye su <b>estructura y formato</b></p>
                 </section>
 
                 <section>
                     <h2>¿Y el DOM?</h2>
-                    <h4>Significa <b>Document Object Model</b></h4>
-                    <p>Es una <b>interfaz</b> de programación para los documentos HTML y XML.</p>
+                    <h4><b>Document Object Model</b></h4>
+                    <p>Es una <b>interfaz</b> de programación para los documentos HTML.</p>
                 </section>
 
                 <section>
@@ -101,14 +101,16 @@
                     </aside>
                 </section>
 
-                <section>
-                    <h2 class="r-fit-text">Examinando el DOM tree</h2>
-                </section>
-
                 <section data-background="#f4e060">
                     <h5>EN RESUMEN</h5>
                     <h3>El DOM es una representación de la página Web <u>usando objetos</u></h3>
                     <p>Y que se puede modificar con JavaScript</p>
+                </section>
+
+                <section>
+                    <h3>¿Como accedemos al DOM?</h3>
+                    <p>Usando el objeto <code>document</code></p>
+                    <img src="images/006-html-code.png" alt="" style="margin:0;">
                 </section>
 
                 <section>
@@ -190,6 +192,113 @@
                     <aside class="notes">
                         es una coleccion de nodos. Es como una "especie de array", es decir puedes acceder a un nodo de la lista haciendo lista[4] como en un array, pero no tiene todos los metodos de un array
                     </aside>
+                </section>
+
+                <section>
+                    <h3>¿Como se trabaja con el DOM?</h3>
+                    <ol>
+                        <li class="fragment">Seleccionamos uno o varios elementos (Objetos)</li>
+                        <li class="fragment">Modificamos sus propiedades</li>
+                        <li class="fragment">Ejecutamos sus metodos</li>
+                    <ol>
+                </section>
+
+                <section>
+                    <h3>Seleccionando elementos</h3>
+                </section>
+
+                <section>
+                    <h2>Métodos clásicos</h2>
+                    <ul>
+                        <li class="fragment">
+                            <code>objeto.getElementById(id)</code><br>
+                            <small>HTMLElement || null</small>
+                        </li>
+                        <li class="fragment">
+                            <code>objeto.getElementsByClassName(name)</code><br>
+                            <small>HTMLCollection || []</small>
+                        </li>
+                        <li class="fragment">
+                            <code>objeto.getElementsByName(name)</code><br>
+                            <small>HTMLCollection || []</small>
+                        </li>
+                        <li class="fragment">
+                            <code>objeto.getElementsByTagName(tag)</code>
+                            <small>HTMLCollection || []</small>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Métodos "modernos"</h2>
+                    <ul>
+                        <li class="fragment">
+                            <code>objeto.querySelector(CSS selector)</code><br>
+                            <small>HTMLElement || null</small>
+                        </li>
+                        <li class="fragment">
+                            <code>objeto.querySelectorAll(CSS selector)</code><br>
+                            <small>NodeList || []</small>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Manos a la obra</h3>
+                    <p>Tenemos este HTML</p>
+                    <img src="images/004-html-code.png" alt="" style="margin:0; height: 500px;">
+                </section>
+
+                <section>
+                    <h3>Seleccionando elementos</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers=|1-3|5-6|8-10|12-13>
+                        // Usando métodos clásicos
+                        const p = document.getElementsByTagName('p');
+                        console.log(p.length); // 4
+                        
+                        const m = document.getElementById('mundo');
+                        console.log(m.innerText) // Hola mundo
+                        
+                        // Usando métodos modernos
+                        const parrafos = document.querySelectorAll('p');
+                        console.log(parrafos.length); // 4
+                        
+                        const mundo = document.querySelector('#mundo');
+                        console.log(mundo.innerText) // Hola mundo
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3><code>document</code> el objeto de entrada</h3>
+                    <p>Para seleccionar elementos del DOM usamos el objeto de <code>document</code></p>
+
+                    <aside class="notes">
+                        <p>Para seleccionar elementos del DOM usamos el objeto de `document` ya que es el elemento mas "global" que tenemos en nuestra página web.</p>
+
+                        <p>Pero igualmente podemos ejecutar los metodos de selección sobre otro elemento para seleccionar los hijos de este.</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>Ejemplo</h3>
+                    <p>Tenemos este HTML</p>
+                    <img src="images/005-html-code.png" alt="" style="margin:0; height: 500px;">
+                </section>
+
+                <section>
+                    <h3>Seleccionando elementos</h3>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers=|1-3|5|7-10>
+                        // Seleccionamos todos los parrafos del documento
+                        const parrafos = document.getElementsByTagName('p');
+                        console.log(parrafos.length); // 2
+
+                        const contenido = document.getElementById('contenido');
+                        
+                        // Sobre el elemento "contenido" buscamos los elementos
+                        // con el tag p:
+                        const contentParrafos = content.getElementsByTagName('p');
+                        console.log(contentParrafos.length) // 1
+                    </code></pre>
                 </section>
 
                 <section>
