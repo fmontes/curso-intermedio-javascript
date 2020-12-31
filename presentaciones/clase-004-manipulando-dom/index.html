@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <title>JavaScript Intermerdio - Clase 2</title>
+
+        <link rel="stylesheet" href="../dist/reset.css" />
+        <link rel="stylesheet" href="../dist/reveal.css" />
+        <link rel="stylesheet" href="../dist/theme/night.css" id="theme" />
+        <link rel="stylesheet" href="../dist/fmontes.css" />
+
+        <base target="_blank" />
+
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="../plugin/highlight/monokai.css" id="highlight-theme" />
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <img
+                        src="images/001-logo.png"
+                        alt="DOM"
+                        style="height: 180px; margin: 0; background: transparent"
+                    />
+                    <h2>Manipulando el DOM</h2>
+                    <p>Creando, editando y eliminando</p>
+                    <p>
+                        <small>Creado por <a href="https://fmontes.com">Freddy Montes</a></small>
+                    </p>
+                </section>
+
+                <section data-background="#f4e060">
+                    <h2>Objetivos</h2>
+                    <ol>
+                        <li>Aprender como agregar, editar y eliminar elementos del DOM</li>
+                        <li>Aprender los metodos y propiedades más comunes para editar el DOM</li>
+                        <li>Aprender a leer la documentación de MDN</li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h2>¿Manipular el DOM?</h2>
+                    <p>
+                        Cuando decimos manipular el DOM lo que hacemos es agregar, modificar y eliminar elementos a la
+                        pagina.
+                    </p>
+
+                    <aside class="notes">
+                        Para manipular el DOM tenemos métodos que podemos ejecutar pero tambien podemos hacerlo
+                        cambiando el valor de las propiedades, veamos las diferencias
+                    </aside>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Cambiando propiedades</h3>
+                    <pre
+                        data-id="code-animation"
+                    ><code class="hlhtml" data-trim data-line-numbers=|1-4|6-7|9-10|12|14-15>
+                        /*
+                            Tenemos este HTML
+                            <h1>Hola, mi nombre es Freddy</h1>
+                        */
+
+                        // Obtenemos el elemento y lo guardamos en la variable h1
+                        const h1 = document.querySelector('h1');
+
+                        // Hola, mi nombre es Freddy
+                        console.log(h1.innerText);
+
+                        h1.innerText = 'Hola, mi apellido es Montes'
+
+                        // Hola, mi apellido es Montes
+                        console.log(h1.innerText);
+                    </code></pre>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Ejecutando métodos</h3>
+                    <pre data-id="code-animation"><code class="hlhtml" data-trim data-line-numbers="17-19">
+                        /*
+                            Tenemos este HTML
+                            <h1>Hola, mi nombre es Freddy</h1>
+                        */
+
+                        // Obtenemos el elemento y lo guardamos en la variable h1
+                        const h1 = document.querySelector('h1');
+
+                        // Hola, mi nombre es Freddy
+                        console.log(h1.innerText);
+
+                        h1.innerText = 'Hola, mi apellido es Montes'
+
+                        // Hola, mi apellido es Montes
+                        console.log(h1.innerText);
+
+                        h1.remove();
+
+                        // Eliminamos el elemento de la página
+                    </code></pre>
+
+                    <aside class="notes">
+                        Entonces, la propiedad solo le asignamos un valor y el metodo lo llamamos con ()
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Agregando elementos</h2>
+                    <small><a href="https://jsbin.com/limuxaw/edit?html,js,output">Demo</a></small>
+                    <pre data-id="code-animation"><code class="hlhtml" data-trim data-line-numbers="|1-2|4-5|7-8|10-14">
+                        // Creamos el elemento, todavía no existe en el DOM
+                        const h1 = document.createElement('h1');
+                        
+                        // Le agregamos texto
+                        h1.innerText = 'Hello World'
+                        
+                        // Ahora si lo agregamos al DOM, en este caso al body
+                        document.body.appendChild(h1);
+                        
+                        /* 
+                            Incluso despues de agregarlo y como tenemos la referecia
+                            podemos cambiarle mas propiedades.
+                        */
+                        h1.style.color = 'red';
+                    </code></pre>
+
+                    <aside class="notes">
+                        <p>Esto lo hacemos en 2 pasos: creamos el elmento y lo agregamos.</p>
+
+                        <ol>
+                            <li>Crear el elemento: <code>document.createElement</code></li>
+                            <li>
+                                Agregarlo: en este caso tenemos varios métodos
+                                <ol>
+                                    <li><code>appendChild</code> y <code>append</code></li>
+                                    <li>
+                                        <code>insertBefore</code>, <code>insertAdjacentElement</code>,
+                                        <code>insertAdjacentHTML</code>, <code>insertBefore</code>
+                                    </li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </aside>
+                </section>
+
+                <section data-background="#f4e060">
+                    <h3>Métodos y propiedades</h3>
+                    <p>Más que memorizarlos, es mejor aprender a leer la documentación</p>
+
+                    <aside class="notes">
+                        <p>Existe muchos métodos y propiedades</p>
+                        <p>NO tenemos que aprendernos todos, de hecho es imposible porque son muchisimos, pero veamos los más comunes:</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <table>
+                        <tr>
+                            <td><b>Métodos más comunes</b></td>
+                            <td>Docs</td>
+                            <td>Ejemplo</td>
+                        </tr>
+                        <tr>
+                            <td><code>document.createElement</code></td>
+                            <td><a href="https://developer.mozilla.org/es/docs/Web/API/Document/createElement">Link</a></td>
+                            <td><a href="https://jsbin.com/limuxaw/edit?html,js,output">Link</a></td>
+                        </tr>
+                        <tr>
+                            <td><code>node.appendChild</code></td>
+                            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild">Link</a></td>
+                            <td><a href="https://jsbin.com/limuxaw/edit?html,js,output
+                                ">Link</a></td>
+                        </tr>
+                        <tr>
+                            <td><code>node.insertBefore</code></td>
+                            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore">Link</a></td>
+                            <td><a href="https://jsbin.com/goyisux/edit?html,js,output">Link</a></td>
+                        </tr>
+                        <tr>
+                            <td><code>node.removeChild</code></td>
+                            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild">Link</a></td>
+                            <td><a href="https://jsbin.com/cigotip/edit?html,js,output">Link</a></td>
+                        </tr>
+                        <tr>
+                            <td><code>node.replaceChild</code></td>
+                            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/replaceChild">Link</a></td>
+                            <td><a href="https://jsbin.com/mogudep/edit?html,js,output">Link</a></td>
+                        </tr>
+                        <tr>
+                            <td><code>node.cloneNode</code></td>
+                            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode">Link</a></td>
+                            <td><a href="https://jsbin.com/biqisas/edit?html,js,console,output">Link</a></td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section>
+                    <table>
+                        <tr>
+                            <td><b>Propiedades más comunes</b></td>
+                            <td>Docs</td>
+                            <td>Ejemplo</td>
+                        </tr>
+                        <tr>
+                            <td><code>element.innerText</code></td>
+                            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/innerText">Link</a></td>
+                            <td><a href="https://jsbin.com/limuxaw/edit?html,js,output
+                                ">Link</a></td>
+                        </tr>
+                        <tr>
+                            <td><code>element.innerHTML</code></td>
+                            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML">Link</a></td>
+                            <td><a href="https://jsbin.com/hefilat/edit?html,js,output">Link</a></td>
+                        </tr>
+                        <tr>
+                            <td><code>element.style.PROPIEDAD_DE_CSS</code></td>
+                            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementCSSInlineStyle/style">Link</a></td>
+                            <td><a href="https://jsbin.com/vozenaq/1/edit?html,js,output">Link</a></td>
+                        </tr>
+                        <tr>
+                            <td><code>element.classList</code></td>
+                            <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList">Link</a></td>
+                            <td><a href="https://jsbin.com/fudedem/2/edit?html,css,js,output
+                                ">Link</a></td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section>
+                    <h2 class="r-fit-text">Muchas Gracias</h2>
+                </section>
+            </div>
+        </div>
+
+        <script src="../dist/reveal.js"></script>
+        <script src="../plugin/notes/notes.js"></script>
+        <script src="../plugin/markdown/markdown.js"></script>
+        <script src="../plugin/highlight/highlight.js"></script>
+        <script>
+            // More info about initialization & config:
+            // - https://revealjs.com/initialization/
+            // - https://revealjs.com/config/
+            Reveal.initialize({
+                hash: true,
+
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+            });
+        </script>
+    </body>
+</html>
