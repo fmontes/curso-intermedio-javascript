@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="../dist/fmontes.css" />
 
         <!-- Theme used for syntax highlighted code -->
-        <link rel="stylesheet" href="../plugin/highlight/monokai.css" id="highlight-theme" />
+        <link rel="stylesheet" href="../plugin/highlight/vs2015.css" id="highlight-theme" />
     </head>
     <body>
         <div class="reveal">
@@ -355,8 +355,8 @@
                         var nombreDeFuncion = () => {
                             console.log(this);
                         };
-                          
-                        nombreDeFuncion(); // undefined
+
+                        nombreDeFuncion(); // Window
                     </code></pre>
 
                     <aside class="notes">
@@ -370,6 +370,23 @@
                     <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
                         function nombreDeFuncion() {
                             console.log(this); // HTMLButtonElement
+                        }
+                        
+                        document.getElementById("button")
+                            .addEventListener('click', nombreDeFuncion)
+                    </code></pre>
+
+                    <aside class="notes">
+                        Otro caso es cuando llamamos la funcion desde un evento bindeado a un elemento del DOM:
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>Elementos del DOM</h3>
+                    <p>Con Arrow Function</p>
+                    <pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+                        const nombreDeFuncion = () => {
+                            console.log(this); // Window
                         }
                         
                         document.getElementById("button")
