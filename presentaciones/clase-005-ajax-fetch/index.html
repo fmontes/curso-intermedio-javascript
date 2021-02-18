@@ -1,0 +1,309 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <title>JavaScript Intermerdio - Clase 5: AJAX y Fetch</title>
+
+        <link rel="stylesheet" href="../dist/reset.css" />
+        <link rel="stylesheet" href="../dist/reveal.css" />
+        <link rel="stylesheet" href="../dist/theme/night.css" id="theme" />
+        <link rel="stylesheet" href="../dist/fmontes.css" />
+
+        <base target="_blank" />
+
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="../plugin/highlight/vs2015.css" id="highlight-theme" />
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <span style="font-size: 150px">⚡️</span>
+                    <h2>AJAX y Fetch</h2>
+                    <p>Haciendo requests</p>
+                    <p>
+                        <small>Creado por <a href="https://fmontes.com">Freddy Montes</a></small>
+                    </p>
+                </section>
+
+                <section data-background="#f4e060">
+                    <h2>Objetivos</h2>
+                    <ol>
+                        <li>Aprender como usar <code>fetch</code></li>
+                        <li>Emtender como funcionan las <code>Promises</code></li>
+                        <li>Aprender que es y como funcionan <code>Request</code> y del <code>Response</code></li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h2>¿Que es AJAX?</h2>
+                    <p>Asynchronous Javascript and XML, es decir Javascript y XML asincrono.</p>
+                </section>
+
+                <section>
+                    <h3>¿Sincrono y asincrono?</h3>
+                    <ul>
+                        <li>
+                            <strong>Síncrono</strong> es cuando una linea de código espera por la anterior para
+                            ejecutarse
+                        </li>
+                        <br />
+                        <li>
+                            <strong>Asíncrono</strong> es código que no espera por instrucciones diferidas y continua su
+                            ejecución
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>¿Sincrono y asincrono?</h3>
+                    <pre><code class="hljs" data-trim data-line-numbers>
+// Sincrono
+console.log('Primero'); 
+console.log('Segundo');
+console.log('Tercero');
+
+// Asincrono
+console.log('Primero');
+setTimeout(_ => {
+    console.log('Segundo');
+},10);
+console.log('Tercero');
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>¿Para qué sirve AJAX?</h2>
+                    <p>Para hacer las paginas web mas dinámicas y rápidas actualizando secciones sin recargar.</p>
+                </section>
+
+                <section>
+                    <h2>¿Como funciona?</h2>
+                    <p>Pongamos el ejemplo de una paginación.</p>
+                </section>
+
+                <section>
+                    <img src="./images/001-no-ajax.png" style="max-width: 80%" alt="No Ajax" />
+                    <aside class="notes">
+                        <ul>
+                            <li>Se hace click en el link de pagina 2</li>
+                            <li>El navegador hace un request al servidor con un URL nuevo</li>
+                            <li>El URL en la barra de navegación cambia</li>
+                            <li>El servidor retorna el HTML para una nueva pagina</li>
+                            <li>El navegador toma el HTML y carga la pagina nueva con todos sus assets</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <img src="./images/002-ajax.png" style="max-width: 80%" alt="No Ajax" />
+                    <aside class="notes">
+                        <ul>
+                            <li>El usuario hace click en el link de pagina 2</li>
+                            <li>Con JavaScript reaccionamos al click</li>
+                            <li>Hacemos un request al servidor usando `fetch` o alguna libreria</li>
+                            <li>Esperamos que el servidor responda (típicamente con un objeto JSON)</li>
+                            <li>Con el objeto de respuesta en JavaScript creamos los nodos de HTML</li>
+                            <li>Reemplazamos o agregamos los nuevos elements de HTML a la pagina</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Request</h2>
+                    <p>Es una petición o solicitud que el cliente (el navegador) le hace a el servidor.</p>
+                </section>
+
+                <section>
+                    <h2>Request</h2>
+                    <p>Un request puede ser para pedir información pero también para <strong>crear</strong>, <strong>actualizar</strong> y <strong>eliminar</strong></p>
+                </section>
+
+                <section>
+                    <h2>CRUD</h2>
+                    <p>Create · Read · Update · Delete</p>
+                </section>
+
+                <section>
+                    <h3>El protocolo HTTP y HTTPS</h3>
+                    <p>Es la manera cómo el navegador se comunica con el servidor.</p>
+
+                    <aside class="notes">
+                        La manera cómo el navegador se comunica con el servidor es a través del protocolo HTTP (Hypertext Transfer Protocol) o HTTPS (que es casi lo mismo pero encriptado).
+                    </aside>
+                </section>
+                <section>
+                    <h2>Métodos</h2>
+                    <ul>
+                        <li><strong>GET</strong> para solicitar información</li>
+                        <li><strong>POST</strong> para actualizar</li>
+                        <li><strong>PUT</strong> para crear</li>
+                        <li><strong>DELETE</strong> para eliminar</li>
+                    </ul>
+
+                    <aside class="notes">
+                        Y como pueden ver cada uno de estos métodos corresponde a las acciones del CRUD.
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>Para hacer un request</h3>
+                    <ul>
+                        <li>Url</li>
+                        <li>Método (por defecto es GET)</li>
+                        <li>Una función que reciba y procese la respuesta</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Fetch</h2>
+                    <ul>
+                        <li>Es un API (una función) para hacer requests y que esta basado en promesas.</li>
+                        <li>Te permite manejar tanto la respuesta como los errores.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Promesas</h2>
+                    <p>Se usan para manejar operaciones asíncronas, como por ejemplo, una petición a un servidor.</p>
+
+                    <aside class="notes">
+                        <h4>Las peticiones son asíncronas</h4>
+                        <p>Cuando hacemos una peticion a un servidor no sabemos cuanto va a tardar en responder ya que depende de muchos factores externos:</p>
+                        <ul>
+                            <li>Velocidad de internet del usuario y del servidor</li>
+                            <li>Velocidad del servidor CPU, memoria, etc</li>
+                            <li>Bases de datos que el servidor necesite consultar</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>El objeto <code>Promise</code></h2>
+                    <p>Representa una eventual completación (o fallo) de una operación asíncrona.</p>
+                </section>
+
+                <section>
+                    <h2>Tiene 3 métodos</h2>
+                    <ul>
+                        <li><code>then()</code>: cuando la promesa se resuelva</li>
+                        <li><code>catch()</code>: cuando devuelve un error</li>
+                        <li><code>finally()</code>: cuando se “completa”, ya sea resuelta o con error</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Haciendo un request con fetch</h3>
+                    <ol>
+                        <li>Un url: <code>string</code></li>
+                        <li>Un objeto de tipo <code>Request</code> con parametros extras</li>
+                        <li>Retorna un objeto de tipo <code>Response</code></li>
+                    </ol>
+                </section>
+
+                <section>
+                    <pre><code class="hljs" data-trim data-line-numbers>
+                        fetch(url)
+                            .then(function(response) {
+                                // SI TODO SALE BIEN SE EJECUTA ESTA FUNCIÓN
+                            })
+                            .catch(function(response) {
+                                // SI HAY UN ERROR SE EJECUTA ESTA FUNCIÓN
+                            })
+                            .finally(function() {
+                                // ESTA FUNCIÓN SE EJECUTA SI FALLA O HAY ERROR
+                            });
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Objeto <code>Request</code></h2>
+                    <p>Es lo que le mandamos al servidor desde el navegador desde JavaScript a través de fetch.</p>
+                    <ul>
+                        <li>URL</li>
+                        <li>Method</li>
+                        <li>Body</li>
+                    </ul>
+
+                    <aside class="notes">
+                        <p>Es lo que le mandamos al servidor desde el navegador desde JavaScript a través de `fetch`.</p>
+                        <p>Uno puede crearlo y mandar varias cosas al servidor, lo que mas nos interesa y que usamos el 90% del tiempo:</p>
+                        <ul>
+                            <li>URL</li>
+                            <li>Method</li>
+                            <li>Body</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Objeto <code>Response</code></h2>
+                    <p>Es lo que los retorna el fetch y qué contiene la información que viene del servidor.</p>
+
+                    <ul>
+                        <li><code>ok</code> un <code>boolean</code> que indica si todo esta bien o no</li>
+                        <li><code>body</code> donde viene la data</li>
+                        <li><code>status</code> un número con el estatus code de la respuesta</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Body</h2>
+                    <ul>
+                        <li><code>json()</code> es una promesa y nos retorna un objeto <code>json</code></li>
+                        <li><code>text()</code> también promesa pero retorna un <code>string</code></li>
+                    </ul>
+                    <aside class="notes">
+                        <p>body: acá es donde viene la información que le pedimos al servidor. Es un objeto donde para acceder a la información que regreso el servidor tenemos que usar sus métodos, los que mas nos interesan:</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Status Code</h2>
+                    <ul>
+                        <li>
+                            <code>200</code> todo bien
+                        </li>
+                        <li><code>404</code> el url no existe</li>
+                        <li><code>500</code> un error en el servidor</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Status Code</h2>
+                    <ul>
+                        <li>
+                            <code>401</code> necesitas autorización
+                        </li>
+                        <li><code>400</code> algo está mal en tu request</li>
+                        <li><code>503</code> servicio no disponible</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 class="r-fit-text">Muchas Gracias</h2>
+                </section>
+            </div>
+        </div>
+
+        <script src="../dist/reveal.js"></script>
+        <script src="../plugin/notes/notes.js"></script>
+        <script src="../plugin/markdown/markdown.js"></script>
+        <script src="../plugin/highlight/highlight.js"></script>
+        <script>
+            // More info about initialization & config:
+            // - https://revealjs.com/initialization/
+            // - https://revealjs.com/config/
+            Reveal.initialize({
+                hash: true,
+
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+            });
+        </script>
+    </body>
+</html>

@@ -15,7 +15,7 @@ Por ultimo hablaremos sobre librerías de JavaScript modernas, que son y para qu
 | 🌲 ¿Que es el DOM? | [Link](https://fmontes.github.io/curso-intermedio-javascript/presentaciones/clase-003-que-es-dom/) | [Link](https://stackblitz.com/edit/clase-003-que-es-dom?file=script.js) | [Link](https://www.notion.so/Que-es-el-DOM-0149c96f391d45b4b692f823d42892ae) |
 | 🌲 Manipulando el DOM | [Link](https://fmontes.github.io/curso-intermedio-javascript/presentaciones/clase-004-manipulando-dom/index.html) | [Link](https://stackblitz.com/edit/clase-004-manipulando-el-dom?file=script.js) | [Link](https://www.notion.so/Manipulando-el-DOM-9b3bb551856049688a63b43f3e7a49a8) |
 | 👩🏽‍💻 Live Coding 1 | N/A | [Link](https://stackblitz.com/edit/clase-005-live-coding-1?file=script.js) | N/A |
-| ⚡️ AJAX | Link | Link |
+| ⚡️ AJAX | [Link](https://fmontes.github.io/curso-intermedio-javascript/presentaciones/clase-005-ajax-fetch/index.html) | [Link](https://stackblitz.com/edit/clase-005-ajax)  | [Link](https://www.notion.so/AJAX-e4221dfca2774baeb05baaa54fbf93ff) |
 | ⚡️ Haciendo request | Link | Link |
 | ⚡️ CRUD y APIs | Link | Link |
 | 🥇 Expresiones regulares | Link | Link |
@@ -25,3 +25,4 @@ Por ultimo hablaremos sobre librerías de JavaScript modernas, que son y para qu
 | 🌿 POO: Funciones y prototype | Link | Link |
 | 🌿 POO: Con clases ES6 | Link | Link |
 | 🎁 Presentacion del proyecto final | Link | Link |
+
